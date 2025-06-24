@@ -8,6 +8,7 @@ export default function UserForm({
   onClose,
   onAddUser,
   initialValues,
+  checkEmailExists,
 }) {
   const [form] = Form.useForm();
   const [imageBase64, setImageBase64] = useState(null);
@@ -37,6 +38,7 @@ export default function UserForm({
     }
 
     const isEdit = !!initialValues;
+
     const newUser = {
       ...values,
       avatar: imageBase64,
@@ -74,7 +76,17 @@ export default function UserForm({
           rules={[
             { required: true },
             { type: "email", message: "Invalid email format" },
-            // NOTE: Nếu cần check trùng email thì xử lý ở cha
+                {
+      validator: (_, value) => {
+        if (!value || !checkEmailExists) return Promise.resolve();
+        if (checkEmailExists(value)) {
+          return Promise.reject(new Error("Email already exists"));
+        }
+        return Promise.resolve();
+      },
+    },
+
+            
           ]}
         >
           <Input placeholder="example@email.com" />

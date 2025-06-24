@@ -58,6 +58,12 @@ export default function App() {
     );
   });
 
+  const checkEmailExists = (email) => {
+  return users.some(
+    (user) => user.email.toLowerCase() === email.toLowerCase()
+  );
+};
+
   return (
     <div className=" bg-gray-100 ">
       <SearchBar
@@ -82,6 +88,7 @@ export default function App() {
         }}
         onAddUser={handleAddUser}
         initialValues={editingUser}
+        checkEmailExists={checkEmailExists}
       />
     </div>
   );
