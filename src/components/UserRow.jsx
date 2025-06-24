@@ -60,7 +60,7 @@ export default function UserRow({ user, onEdit, onDeleteConfirm }) {
       </div>
 
       {/* Actions */}
-      <div className="mt-3 md:mt-0 col-span-2 flex gap-2 justify-end">
+      <div className="mt-3 md:mt-0 col-span-2 flex gap-2">
         <Button
           type="primary"
           size="small"

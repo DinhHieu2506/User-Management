@@ -6,7 +6,7 @@ export default function SearchBar({ onAddUser, searchTerm, onSearchChange }) {
   return (
     <div className="bg-gray-100">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 bg-white border-b border-gray-200 rounded-t-lg gap-4">
-        <h1 className="text-xl font-semibold">User Management</h1>
+        <h1 className="text-xl font-bold">User Management</h1>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
           <Input

@@ -48,7 +48,7 @@ export default function UserForm({
     onAddUser(newUser);
     form.resetFields();
     setImageBase64(null);
-    message.success(isEdit ? "Đã cập nhật thành công" : "Đã thêm thành công");
+    message.success(isEdit ? "Updated Successfully" : "Added Successfully");
   };
 
   const handleCancel = () => {
