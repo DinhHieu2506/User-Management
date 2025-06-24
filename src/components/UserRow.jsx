@@ -15,6 +15,17 @@ export default function UserRow({ user, onEdit, onDeleteConfirm }) {
     }
   };
 
+  const getStatusStyle = (status) => {
+    switch (status) {
+      case "Active":
+        return "bg-green-100 text-green-800";
+      case "Inactive":
+        return "bg-gray-200 text-gray-600";
+        default:
+        return "bg-gray-200 text-gray-600";
+    }
+  };
+
   return (
     <div className="border-b border-gray-200 px-4 py-4 md:grid md:grid-cols-12 md:gap-4 hover:bg-gray-50">
       {/* Name + Avatar */}
@@ -49,11 +60,9 @@ export default function UserRow({ user, onEdit, onDeleteConfirm }) {
       {/* Status */}
       <div className="mt-2 md:mt-0 col-span-2">
         <span
-          className={`inline-block px-2 py-1 text-xs font-semibold rounded-full ${
-            user.status === "Active"
-              ? "bg-green-100 text-green-800"
-              : "bg-gray-200 text-gray-600"
-          }`}
+          className={`inline-block px-2 py-1 text-xs font-semibold rounded-full ${getStatusStyle(
+            user.status 
+         )}`}
         >
           {user.status}
         </span>
