@@ -24,16 +24,16 @@ o	Search results should update instantly as the user types.
 
 
 Technologies & Architecture
-•	Component-Based Architecture: Structure the application using reusable React components (e.g., UserTable, UserForm, SearchBar, UserRow for individual table rows).
-•	State & Props: Utilize React's useState and useEffect hooks for managing component state and application data.
-•	Form Handling & Events: Manage form inputs as controlled components and handle events (onChange, onSubmit, onClick) effectively.
-•	CRUD Operations: Fully implement Create, Read, Update, and Delete operations.
-•	Local Storage: All user data must be stored and retrieved from the browser's localStorage.
-•	Conditional Rendering: Use conditional rendering to show/hide UI elements (e.g., form modals, confirmation dialogs) based on application state.
-•	Styling & UI Framework: 
-o	Utilize Tailwind CSS for all UI styling to ensure flexibility and high customizability.
-o	Integrate with a UI framework to provide pre-built components, accelerating development and ensuring UI consistency. Ant Design (Antd) is recommended due to its robust Table, Form, Input, Button, and Modal components, which align well with the clean, professional look of your provided image.
-•	Responsive Design: Ensure the application is fully responsive and functions well across various screen sizes (desktop, tablet, mobile).
-Link Design
-•	https://i.ibb.co/zHGgNDRp/Screenshot-1.png
+        •	Component-Based Architecture: Structure the application using reusable React components (e.g., UserTable, UserForm, SearchBar, UserRow for individual table rows).
+        •	State & Props: Utilize React's useState and useEffect hooks for managing component state and application data.
+        •	Form Handling & Events: Manage form inputs as controlled components and handle events (onChange, onSubmit, onClick) effectively.
+        •	CRUD Operations: Fully implement Create, Read, Update, and Delete operations.
+        •	Local Storage: All user data must be stored and retrieved from the browser's localStorage.
+        •	Conditional Rendering: Use conditional rendering to show/hide UI elements (e.g., form modals, confirmation dialogs) based on application state.
+        •	Styling & UI Framework: 
+        o	Utilize Tailwind CSS for all UI styling to ensure flexibility and high customizability.
+        o	Integrate with a UI framework to provide pre-built components, accelerating development and ensuring UI consistency. Ant Design (Antd) is recommended due to its robust Table, Form, Input, Button, and Modal components, which align well with the clean, professional look of your provided image.
+        •	Responsive Design: Ensure the application is fully responsive and functions well across various screen sizes (desktop, tablet, mobile).
+        Link Design
+        •	https://i.ibb.co/zHGgNDRp/Screenshot-1.png
 
