@@ -76,17 +76,20 @@ export default function UserForm({
           rules={[
             { required: true },
             { type: "email", message: "Invalid email format" },
-                {
-      validator: (_, value) => {
-        if (!value || !checkEmailExists) return Promise.resolve();
-        if (checkEmailExists(value)) {
-          return Promise.reject(new Error("Email already exists"));
-        }
-        return Promise.resolve();
-      },
-    },
+            {
+              validator: (_, value) => {
+                if (!value || !checkEmailExists) return Promise.resolve();
 
-            
+                const isEdit = !!initialValues;
+                const emailChanged = value !== initialValues?.email;
+
+                if ((!isEdit || emailChanged) && checkEmailExists(value)) {
+                  return Promise.reject(new Error("Email already exists"));
+                }
+
+                return Promise.resolve();
+              },
+            },
           ]}
         >
           <Input placeholder="example@email.com" />
