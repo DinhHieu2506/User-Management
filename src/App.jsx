@@ -8,8 +8,7 @@ import {
   deleteUserFromStorage,
 } from "./utils/storage";
 
-const removeAccents = (str) =>
-  str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
