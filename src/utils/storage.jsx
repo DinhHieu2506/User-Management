@@ -17,8 +17,28 @@ export const addUserToStorage = (user) => {
 
 export const deleteUserFromStorage = (userId) => {
   const users = getUsersFromStorage();
+  const exists = users.some((u) => u.id === userId);
+
+  if (!exists) {
+    throw new Error("User ID not found");
+  }
+
   const updatedUsers = users.filter((u) => u.id !== userId);
   saveUsersToStorage(updatedUsers);
 };
 
+export const updateUserInStorage = (updatedUser) => {
+  const users = getUsersFromStorage();
+  const exists = users.some((u) => u.id === updatedUser.id);
+
+  if (!exists) {
+    throw new Error("User ID not found");
+  }
+
+  const updatedUsers = users.map((u) =>
+    u.id === updatedUser.id ? updatedUser : u
+  );
+
+  saveUsersToStorage(updatedUsers);
+};
 

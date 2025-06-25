@@ -9,7 +9,8 @@ export default function UserRow({ user, onEdit, onDeleteConfirm }) {
       case "User":
         return "bg-purple-100 text-purple-800";
       case "Moderator":
-        return "bg-yellow-100 text-yellow-800";
+        return "bg-green-100 text-green-800";
+       
       default:
         return "bg-gray-200 text-gray-600";
     }
@@ -20,26 +21,50 @@ export default function UserRow({ user, onEdit, onDeleteConfirm }) {
       case "Active":
         return "bg-green-100 text-green-800";
       case "Inactive":
-        return "bg-gray-200 text-gray-600";
+         return "bg-yellow-100 text-yellow-800";
         default:
         return "bg-gray-200 text-gray-600";
     }
   };
 
+  const handleFinish = (values) => {
+  const trimmedValues = {
+    ...values,
+    name: values.name.trim(),
+    email: values.email.trim(),
+    role: values.role.trim(),
+    status: values.status.trim(),
+  };
+
+  if (initialValues) {
+    // Chế độ Edit
+    onAddUser({ ...initialValues, ...trimmedValues });
+  } else {
+    // Chế độ Create
+    onAddUser(trimmedValues);
+  }
+
+  form.resetFields();
+  setImageBase64("");
+  onClose();
+};
+
   return (
     <div className="border-b border-gray-200 px-4 py-4 md:grid md:grid-cols-12 md:gap-4 hover:bg-gray-50">
       {/* Name + Avatar */}
       <div className="flex items-center col-span-3">
-        <img
-          src={user.avatar || `https://i.pravatar.cc/100?u=${user.email}`}
-          alt={user.name}
-          className="h-8 w-8 rounded-full mr-3"
-        />
-        <div>
-          <div className="text-sm font-medium text-gray-900">{user.name}</div>
-          <div className="md:hidden text-xs text-gray-500">{user.email}</div>
-        </div>
-      </div>
+  <img
+    src={user.avatar || `https://i.pravatar.cc/100?u=${user.email}`}
+    alt={user.name}
+    className="h-8 w-8 rounded-full mr-3"
+  />
+  <div className="min-w-0"> {/* để truncate hoạt động trong flex */}
+    <div className="text-sm font-medium text-gray-900 truncate max-w-[150px]">
+      {user.name}
+    </div>
+    <div className="md:hidden text-xs text-gray-500">{user.email}</div>
+  </div>
+</div>
 
       {/* Email */}
       <div className="hidden md:block col-span-3 text-sm text-gray-600">

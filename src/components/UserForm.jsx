@@ -31,25 +31,30 @@ export default function UserForm({
     reader.readAsDataURL(file);
   };
 
-  const handleFinish = (values) => {
-    if (!imageBase64) {
-      message.error("Please upload an image.");
-      return;
-    }
+  const handleFinish = async (values) => {
+  if (!imageBase64) {
+    message.error("Please upload an image.");
+    return;
+  }
 
-    const isEdit = !!initialValues;
+  const isEdit = !!initialValues;
 
-    const newUser = {
-      ...values,
-      avatar: imageBase64,
-      id: initialValues?.id || Date.now(),
-    };
+  const newUser = {
+    ...values,
+    avatar: imageBase64,
+    id: initialValues?.id || Date.now(),
+  };
 
-    onAddUser(newUser);
+  try {
+    await onAddUser(newUser); 
     form.resetFields();
     setImageBase64(null);
     message.success(isEdit ? "Updated Successfully" : "Added Successfully");
-  };
+  } catch (error) {
+    message.error(error.message || "Failed to save user");
+  }
+};
+
 
   const handleCancel = () => {
     onClose();

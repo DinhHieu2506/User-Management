@@ -3,18 +3,24 @@ import {ExclamationCircleOutlined} from '@ant-design/icons'
 import UserRow from "./UserRow"; 
 export default function UserTable({ users, onDelete, onEdit }) {
   const showDeleteConfirm = (id) => {
-    Modal.confirm({
-      title: "Are you sure you want to delete this user?",
-      icon: <ExclamationCircleOutlined />,
-      okText: "Yes",
-      okType: "danger",
-      cancelText: "No",
-      onOk() {
-        onDelete(id);
+  Modal.confirm({
+    title: "Are you sure you want to delete this user?",
+    icon: <ExclamationCircleOutlined />,
+    okText: "Yes",
+    okType: "danger",
+    cancelText: "No",
+    async onOk() {
+      try {
+        await onDelete(id); 
         message.success("User deleted successfully");
-      },
-    });
-  };
+      } catch (error) {
+        message.error(error.message || "Delete failed");
+      }
+    },
+  });
+};
+
+
 
   return (
     <div className="p-4 md:p-6 bg-gray-100 min-h-screen">

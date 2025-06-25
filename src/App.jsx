@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
 import UserTable from "./components/UserTable";
 import UserForm from "./components/UserForm";
+import { message } from "antd";
 import {
   getUsersFromStorage,
   addUserToStorage,
@@ -30,23 +31,43 @@ export default function App() {
   }, [searchTerm]);
 
   const handleAddUser = (newUser) => {
-    let updatedUsers;
-    if (editingUser) {
-      updatedUsers = users.map((u) => (u.id === newUser.id ? newUser : u));
-    } else {
-      updatedUsers = [...users, newUser];
+  const latestUsers = getUsersFromStorage(); // kiểm tra dữ liệu thật
+
+ 
+  if (editingUser) {
+    const exists = latestUsers.some((u) => u.id === newUser.id);
+    if (!exists) {
+      setIsModalOpen(false);
+      setEditingUser(null);
+      throw new Error("User has been deleted. Cannot update.");
     }
+
+    const updatedUsers = latestUsers.map((u) =>
+      u.id === newUser.id ? newUser : u
+    );
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     setUsers(updatedUsers);
-    setIsModalOpen(false);
-    setEditingUser(null);
-  };
+  } else {
+    const updatedUsers = [...latestUsers, newUser];
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+    setUsers(updatedUsers);
+  }
+
+  setIsModalOpen(false);
+  setEditingUser(null);
+};
+
 
   const handleDeleteUser = (userId) => {
+  try {
     deleteUserFromStorage(userId);
     setUsers(getUsersFromStorage());
-  };
+  } catch (error) {
+    throw error; 
+  }
+};
+
   const normalize = (str) => str.trim();
   const filteredUsers = users.filter((user) => {
     const search = normalize(debouncedSearchTerm);
