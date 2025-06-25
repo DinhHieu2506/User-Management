@@ -37,16 +37,24 @@ export default function UserForm({
     return;
   }
 
-  const isEdit = !!initialValues;
 
-  const newUser = {
+  const trimmedValues = {
     ...values,
+    name: values.name.replace(/\s+/g, ' ').trim(),
+    email: values.email.replace(/\s+/g, ' ').trim(),
+    role: values.role.trim(),
+    status: values.status.trim(),
+  };
+
+  const isEdit = !!initialValues;
+  const newUser = {
+    ...trimmedValues,
     avatar: imageBase64,
     id: initialValues?.id || Date.now(),
   };
 
   try {
-    await onAddUser(newUser); 
+    await onAddUser(newUser);
     form.resetFields();
     setImageBase64(null);
     message.success(isEdit ? "Updated Successfully" : "Added Successfully");
