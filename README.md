@@ -1,91 +1,38 @@
-💼 User Management CRUD Application
-🧩 Challenge
-Build a User Management CRUD Application using React.js, Tailwind CSS, and Ant Design.
+Challenge: Build a User Management CRUD Application with React.js & Tailwind CSS
+Objective
+Develop a web application for user management, allowing users to add, view, edit, and delete user information. Data will be stored locally and displayed in an interactive table.
+Application Pages (Suggested Development Order)
+•	Home Page: The main interface of the application, displaying the user list and management functionalities.
+Core Functionalities
+1.	Add New User: 
+o	When the "+ Add New User" button is clicked, display a form (e.g., in a modal or popup) to input user information.
+o	Minimum required fields: Name, Email, Role, and Status.
+o	Implement basic input validation (e.g., valid email format, required fields).
+2.	View User List: 
+o	Display all user records in a data table (as shown in the image).
+o	Table columns must include: NAME (with avatar/placeholder), EMAIL, ROLE, STATUS, and ACTIONS.
+o	Display Role and Status as distinct, color-coded "badges" for better visual distinction.
+3.	Edit User: 
+o	When the "Edit" button on a row is clicked, display a form (similar to the add new form) pre-filled with the user's current information for editing.
+o	Save the changes to the local data.
+4.	Delete User: 
+o	When the "Delete" button on a row is clicked, display a confirmation dialog before proceeding with user deletion.
+o	Remove the user from the local data.
+5.	Search Users: 
+o	Implement a search bar (like "Search users...") to filter the user list based on Name or Email.
+o	Search results should update instantly as the user types.
 
-🎯 Objective
-Develop a web application for user management, allowing users to:
 
-✅ Add
-
-🔍 View
-
-✏️ Edit
-
-🗑️ Delete
-
-user information.
-👉 All data will be stored in localStorage and displayed in an interactive table.
-
-📄 Application Pages
-🏠 Home Page
-The main interface of the application.
-
-Displays the user list and all management functionalities.
-
-⚙️ Core Functionalities
-1. ➕ Add New User
-Click "+ Add New User" to open a modal with a user form.
-
-Required fields: Name, Email, Role, and Status.
-
-Validation:
-
-All fields required
-
-Valid email format
-
-2. 👀 View User List
-Display all user records in a data table.
-
-Columns: NAME (with avatar or placeholder), EMAIL, ROLE, STATUS, ACTIONS.
-
-Use color-coded badges for Role and Status.
-
-3. ✏️ Edit User
-Click the Edit button in a user row to open the form (modal) pre-filled with current data.
-
-Save updates to localStorage.
-
-4. 🗑️ Delete User
-Click the Delete button in a user row.
-
-Show a confirmation dialog before deletion.
-
-Remove the user from localStorage upon confirmation.
-
-5. 🔍 Search Users
-Include a search bar with placeholder: "Search users...".
-
-Filter users based on Name or Email.
-
-Instant results as the user types.
-
-🧱 Technologies & Architecture
-✅ React.js: Functional components, Hooks (useState, useEffect)
-
-✅ Tailwind CSS: Utility-first styling
-
-✅ Ant Design (Antd): UI Components (Table, Form, Input, Button, Modal)
-
-✅ Local Storage: Store user data in browser
-
-✅ Component-based architecture:
-
-SearchBar
-
-UserTable
-
-UserForm
-
-UserRow
-
-✅ Form Handling: Controlled components with event handling (onChange, onSubmit)
-
-✅ CRUD Operations: Full Create, Read, Update, Delete support
-
-✅ Conditional Rendering: Modals, alerts based on state
-
-✅ Responsive Design: Mobile-first, optimized for desktop, tablet, and phone
-
-📐 UI Design Reference
-📸 View UI Design
+Technologies & Architecture
+•	Component-Based Architecture: Structure the application using reusable React components (e.g., UserTable, UserForm, SearchBar, UserRow for individual table rows).
+•	State & Props: Utilize React's useState and useEffect hooks for managing component state and application data.
+•	Form Handling & Events: Manage form inputs as controlled components and handle events (onChange, onSubmit, onClick) effectively.
+•	CRUD Operations: Fully implement Create, Read, Update, and Delete operations.
+•	Local Storage: All user data must be stored and retrieved from the browser's localStorage.
+•	Conditional Rendering: Use conditional rendering to show/hide UI elements (e.g., form modals, confirmation dialogs) based on application state.
+•	Styling & UI Framework: 
+o	Utilize Tailwind CSS for all UI styling to ensure flexibility and high customizability.
+o	Integrate with a UI framework to provide pre-built components, accelerating development and ensuring UI consistency. Ant Design (Antd) is recommended due to its robust Table, Form, Input, Button, and Modal components, which align well with the clean, professional look of your provided image.
+•	Responsive Design: Ensure the application is fully responsive and functions well across various screen sizes (desktop, tablet, mobile).
+Link Design
+•	https://i.ibb.co/zHGgNDRp/Screenshot-1.png
